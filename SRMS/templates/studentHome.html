@@ -1,0 +1,34 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Home</title>
+        <link type="text/css" rel = "stylesheet" href="{% static 'css/style.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<div class = "home">
+        <h1>Student Result Management System</h1>
+<style>
+    .home h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+</style>
+    <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'studentHome' %}">Home</a></li>
+        <li> <a href="{% url 'about' %}">Change Password</a></li>
+        <li><a href="{% url 'adminHome' %}">Admin</a></li>
+        <li><a href="{% url 'facultyHome' %}">Faculty</a></li>
+        <li><a href="{% url 'viewcourse' %}">Courses</a></li>
+        <li><a href="{% url 'student_logout' %}">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+        <h1>Welcome to the Student Home Page</h1>
+    <a href="{%url 'viewstudent' %}"><u>View Student List</u></a>
+    </body>
+</div>
+</html>

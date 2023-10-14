@@ -1,0 +1,35 @@
+{%  load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course List</title>
+    <link type="text/css" rel = "stylesheet" href="{% static 'css/table.css'%}">
+    <link type="text/css" rel = "stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+<table class="zigzag" align="center">
+  <thead>
+    <tr>
+      <th class="header">Department</th>
+      <th class="header">Academic Year</th>
+      <th class="header">Year</th>
+      <th class="header">Semester</th>
+      <th class="header">Coursecode</th>
+      <th class="header">Course Title</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for course in coursesData %}
+      <tr>
+        <td>{{course.department}}</td>
+        <td>{{course.academicYear}}</td>
+        <td>{{course.year}}</td>
+        <td>{{course.semester}}</td>
+        <td>{{course.coursecode}}</td>
+        <td>{{course.courseTitle}}</td>
+      </tr>
+    {% endfor%}
+    </tbody>
+</table>
+</body>
+</html>
