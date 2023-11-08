@@ -1,8 +1,12 @@
 from django.db.models import Q
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render
+from .models import Student
+from django.db.models import Sum
 
-from .models import Admin, Student, Faculty, Course, Result
+
+from .models import Admin, Student, Faculty, Course
 
 
 # Create your views here.
@@ -38,11 +42,56 @@ def viewcourses(request):
 def viewstudents(request):
     students = Student.objects.all()
     return render(request,"viewStudents.html",{"studentsData":students})
+def getCourses(request):
+    id = request.POST.get("id_number")
+    student = Student.objects.get(studentId=id)
+    enrolled_courses = student.courses.all()
+    return render(request,"viewCourses.html",{"coursesData":enrolled_courses})
+
+def coursesForm(request):
+    return render(request,"getCourses.html")
+
+from django.shortcuts import render, redirect
+from .forms import MarksForm, StudentForm
 
 
-def student_results(request, student_id):
-    student_results = Result.objects.filter(student__studentId=student_id)
-    return render(request, 'results.html', {'student_results': student_results})
+def award_marks(request):
+    if request.method == 'POST':
+        form = MarksForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('success_page')  # Redirect to a success page or a different view
+    else:
+        form = MarksForm()
+
+    return render(request, 'award_marks.html', {'form': form})
 
 
-# Create your views here.
+class StudentUpdateForm:
+    pass
+
+
+def add_student(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('viewstudents')
+    else:
+        form = StudentForm()
+
+    return render(request, 'add_student.html', {'form': form})
+
+
+def update_student(request, student_id):
+    student = get_object_or_404(Student, studentId=student_id)
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('viewstudent')
+    else:
+        form = StudentForm(instance=student)
+
+    return render(request, 'update_student.html', {'form': form, 'student': student})

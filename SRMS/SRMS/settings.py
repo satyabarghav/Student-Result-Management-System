@@ -41,8 +41,15 @@ INSTALLED_APPS = [
     'adminApp',
     'studentApp',
     'static',
+    'tailwind',
+    'theme',
+    'django_browser_reload'
 ]
 
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,7 +87,7 @@ WSGI_APPLICATION = 'SRMS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SRMS',
+        'NAME': 'srms_copy',
         'USER': 'root',
         'PASSWORD': '19751982',
         'HOST':'localhost',

@@ -1,0 +1,17 @@
+{%load static%}
+<html lang="en">
+<head>
+    <title>Total Marks</title>
+    <link type="text/css" rel = "stylesheet" href="{% static 'css/style.css'%}"
+</head>
+<div class="result">
+<body>
+    <h1>Total Marks Obtained by {{ student.studentId }}</h1>
+    <p>Total Marks: {{ total_marks }}</p>
+<style>
+    .result h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+    .result p { color: #fff; text-shadow: 0 0 8px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+</style>
+</div>
+</body>
+

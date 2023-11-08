@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Award Marks</title>
+</head>
+<body>
+    <h1>Award Marks for a Course</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Award Marks">
+    </form>
+</body>
+</html>

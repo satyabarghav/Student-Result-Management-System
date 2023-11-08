@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Result</title>
+</head>
+<body>
+    <h1>Generate Student Result</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Generate Result">
+    </form>
+</body>
+</html>

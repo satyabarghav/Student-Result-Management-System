@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result</title>
+</head>
+<body>
+    <h1>Generate Student Result</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Generate Result">
+    </form>
+    <hr>
+    {% if student %}
+        <h2>Student Information</h2>
+        <p>Student ID: {{ student.roll_number }}</p>
+        <p>Name: {{ student.name }}</p>
+        <h2>Results</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ Resultcourse.title }}: {{ result.marks_obtained }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
